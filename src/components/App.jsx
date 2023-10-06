@@ -2,31 +2,23 @@ import React, { useEffect } from 'react';
 import ContactList from './ContactList/ContactList';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
-import { useSelector } from 'react-redux'; // usunięto `useDispatch`
-
-// Zakomentowany import setFilter
-// import { setFilter } from '../features/phonebookSlice';
+import { useSelector } from 'react-redux'; 
 
 export function App() {
-  // Usunięto nieużywane `dispatch`
+  
   const contacts = useSelector(state => state.phonebook.contacts);
   const filter = useSelector(state => state.phonebook.filter);
 
   useEffect(() => {
     const storedContacts = localStorage.getItem('contacts');
     if (storedContacts) {
-      // TODO: Set contacts from local storage to Redux store if needed
+     
     }
   }, []);
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
-
-  // Zakomentowana funkcja `handleFilterChange`
-  // const handleFilterChange = e => {
-  //   dispatch(setFilter(e.target.value));
-  // };
 
   const filteredContacts = () => {
     return contacts.filter(contact =>
